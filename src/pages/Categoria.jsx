@@ -3,7 +3,7 @@ import "../assets/css/blog.css";
 import { buscar } from "../api/api";
 import ListCategories from "../components/ListCategories";
 import ListPosts from "../components/ListPosts";
-import SubCategoria from "./Subcategoria";
+import SubCategoria from "./SubCategoria";
 import {
   useParams,
   Routes,
@@ -13,15 +13,14 @@ import {
 } from "react-router-dom";
 
 const Categoria = () => {
-  const [subcategorias, setSubCategorias] = useState([]);
+  const [subcategorias, setSubcategorias] = useState([]);
   const { id } = useParams();
 
-  const url = useResolvedPath().pathname;
-  //   console.log(url);
+  const url = useResolvedPath("").pathname;
 
   useEffect(() => {
     buscar(`/categorias?id=${id}`, (response) => {
-      setSubCategorias(response[0].subcategorias);
+      setSubcategorias(response[0].subcategorias);
     });
   }, [id]);
 
